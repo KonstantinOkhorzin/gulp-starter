@@ -23,4 +23,9 @@ module.exports = {
         watch: pathSrc + "/img/**/*.{png,jpg,jpeg,gif,svg,ico}", // Следим за всеми файлами  любой вложености в папке src/img
         dest: pathDest + "/img" //Копируем в  папку public в папку img
     },
+    icons: {
+        src: pathSrc + "/icons/**/*.{png,jpg,jpeg,gif,svg,ico}", //Копируем с папки src/icons файлы любой вложености
+        watch: pathSrc + "/icons/**/*.{png,jpg,jpeg,gif,svg,ico}", // Следим за всеми файлами  любой вложености в папке src/icons
+        dest: pathDest + "/icons" //Копируем в  папку public в папку icons
+    },
 };

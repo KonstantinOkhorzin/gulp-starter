@@ -13,18 +13,18 @@ const newer = require("gulp-newer");
 
 
 
-// Обработка IMG
-const img = () => {
-    return src(path.img.src) //Копируем с папки src/img файлы любой вложености
+// Обработка ICONS
+const icons = () => {
+    return src(path.icons.src) //Копируем с папки src/icons файлы любой вложености
         .pipe(plumber({
             errorHandler: notify.onError(error => ({
-                title: "IMG",
+                title: "ICONS",
                 message: error.message
             }))
         }))
-        .pipe(newer(path.img.dest)) //Фильтрует изображения чтобы повторно не оптимизировать
+        .pipe(newer(path.icons.dest)) //Фильтрует изображения чтобы повторно не оптимизировать
         .pipe(imagemin(app.imagemin)) //Оптимизируем картинку
-        .pipe(dest(path.img.dest)); //Копируем в  папку src public
+        .pipe(dest(path.icons.dest)); //Копируем в  папку src public
 };
 
-module.exports = img;
+module.exports = icons;

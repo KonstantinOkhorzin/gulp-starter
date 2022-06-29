@@ -10,6 +10,7 @@ const html = require('./gulp/tasks/html.js');
 const scss = require('./gulp/tasks/scss.js');
 const js = require('./gulp/tasks/js.js');
 const img = require('./gulp/tasks/img.js');
+const icons = require('./gulp/tasks/icons.js');
 
 // Сервер
 const server = () => {
@@ -25,7 +26,8 @@ const watcher = () => {
     watch(path.html.watch, html).on("all", browserSync.reload);
     watch(path.scss.watch, scss).on("all", browserSync.reload);
     watch(path.js.watch, js).on("all", browserSync.reload);
-    watch(path.img.watch, img).on("all", browserSync.reload);  
+    watch(path.img.watch, img).on("all", browserSync.reload);
+    watch(path.icons.watch, icons).on("all", browserSync.reload);  
 };
 
 // Задачи
@@ -33,9 +35,10 @@ exports.html = html;
 exports.scss = scss;
 exports.js = js;
 exports.img = img;
+exports.icons = icons;
 
 // Сборка
 exports.dev = series(
     clear,
-    parallel(html, scss, js, img),
+    parallel(html, scss, js, img, icons),
     parallel(watcher, server));
