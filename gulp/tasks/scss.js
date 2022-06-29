@@ -19,7 +19,7 @@ const sassGlob = require("gulp-sass-glob");
 
 // Обработка SCSS
 const scss = () => {
-    return src(path.scss.src, { sourcemaps: true }) //Копируем с папки src/ папка scss/ файл style
+    return src(path.scss.src, { sourcemaps: true }) //Копируем с папки src scss файлы первой вложености
         .pipe(plumber({
             errorHandler: notify.onError(error => ({
                 title: "SCSS",

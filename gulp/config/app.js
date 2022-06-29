@@ -3,5 +3,8 @@
 module.exports = {
     htmlmin: {
         collapseWhitespace: true //Сжимаем html
+    },
+    webpack: {
+        mode: "development"
     }
 };
