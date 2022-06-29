@@ -24,7 +24,7 @@ const icons = () => {
         }))
         .pipe(newer(path.icons.dest)) //Фильтрует изображения чтобы повторно не оптимизировать
         .pipe(imagemin(app.imagemin)) //Оптимизируем картинку
-        .pipe(dest(path.icons.dest)); //Копируем в  папку src public
+        .pipe(dest(path.icons.dest)); //Копируем в  папку public
 };
 
 module.exports = icons;

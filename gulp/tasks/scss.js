@@ -34,11 +34,11 @@ const scss = () => {
         .pipe(shorthand()) //Обьединям свойства которые поддерживают сокращение
         .pipe(groupCssMediaQueries()) //Групируем медиа выражения
         .pipe(size({ title: "style.css"})) //Показывает размер до сжатия
-        .pipe(dest(path.scss.dest, { sourcemaps: true })) //Копируем в  папку src public создаем не сжатый дубль
+        .pipe(dest(path.scss.dest, { sourcemaps: true })) //Копируем в  папку public создаем не сжатый дубль
         .pipe(rename( {suffix: ".min"})) //Переименовываем файл
         .pipe(csso()) //Сжимаем файл
         .pipe(size({ title: "style.min.css"})) //Показывает размер после сжатия
-        .pipe(dest(path.scss.dest, { sourcemaps: true })); //Копируем в  папку src public
+        .pipe(dest(path.scss.dest, { sourcemaps: true })); //Копируем в  папку public
 };
 
 module.exports = scss;

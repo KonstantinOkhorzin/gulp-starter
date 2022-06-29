@@ -24,7 +24,7 @@ const js = () => {
         }))
         .pipe(babel()) //Преобразовываем код в старый формат
         .pipe(webpack(app.webpack))
-        .pipe(dest(path.js.dest, { sourcemaps: true })); //Копируем в  папку src public
+        .pipe(dest(path.js.dest, { sourcemaps: true })); //Копируем в  папку public
 };
 
 module.exports = js;

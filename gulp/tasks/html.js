@@ -27,7 +27,7 @@ const html = () => {
         .pipe(size({title: "До сжатия HTML"})) //Показывает размер до сжатия
         .pipe(htmlmin(app.htmlmin)) //Сжимаем html
         .pipe(size({title: "После сжатия HTML"})) //Показывает размер после сжатия
-        .pipe(dest(path.html.dest)); //Копируем в  папку src public
+        .pipe(dest(path.html.dest)); //Копируем в  папку public
 };
 
 module.exports = html;

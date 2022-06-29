@@ -25,11 +25,11 @@ const img = () => {
         }))
         .pipe(newer(path.img.dest)) //Фильтрует изображения чтобы повторно не оптимизировать
         .pipe(webp())
-        .pipe(dest(path.img.dest)) //Копируем в  папку src public
+        .pipe(dest(path.img.dest)) //Копируем в  папку public
         .pipe(src(path.img.src))
         .pipe(newer(path.img.dest)) //Фильтрует изображения чтобы повторно не оптимизировать
         .pipe(imagemin(app.imagemin)) //Оптимизируем картинку
-        .pipe(dest(path.img.dest)); //Копируем в  папку src public
+        .pipe(dest(path.img.dest)); //Копируем в  папку public
 };
 
 module.exports = img;
