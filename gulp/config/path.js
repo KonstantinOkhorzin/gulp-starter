@@ -11,11 +11,16 @@ module.exports = {
     scss: {
         src: pathSrc + "/scss/*.{scss, sass}", //Копируем с папки src scss файлы первой вложености
         watch: pathSrc + "/scss/**/*.{scss, sass}", // Следим за всеми файлами scss любой вложености в папке src/scss
-        dest: pathDest + "/css" //Копируем в  папку src public в папку css
+        dest: pathDest + "/css" //Копируем в  папку public в папку css
     },
     js: {
         src: pathSrc + "/js/*.js", //Копируем с папки src js файлы первой вложености
         watch: pathSrc + "/js/**/*.js", // Следим за всеми файлами js любой вложености в папке src/js
-        dest: pathDest + "/js" //Копируем в  папку src public в папку js
+        dest: pathDest + "/js" //Копируем в  папку public в папку js
+    },
+    img: {
+        src: pathSrc + "/img/**/*.{png,jpg,jpeg,gif,svg,ico}", //Копируем с папки src/img файлы любой вложености
+        watch: pathSrc + "/img/**/*.{png,jpg,jpeg,gif,svg,ico}", // Следим за всеми файлами  любой вложености в папке src/img
+        dest: pathDest + "/img" //Копируем в  папку public в папку img
     },
 };
