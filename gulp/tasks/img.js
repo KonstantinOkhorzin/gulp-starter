@@ -10,6 +10,7 @@ const plumber = require("gulp-plumber");
 const notify = require("gulp-notify");
 const imagemin = require("gulp-imagemin");
 const newer = require("gulp-newer");
+const webp = require("gulp-webp");
 
 
 
@@ -22,6 +23,10 @@ const img = () => {
                 message: error.message
             }))
         }))
+        .pipe(newer(path.img.dest)) //Фильтрует изображения чтобы повторно не оптимизировать
+        .pipe(webp())
+        .pipe(dest(path.img.dest)) //Копируем в  папку src public
+        .pipe(src(path.img.src))
         .pipe(newer(path.img.dest)) //Фильтрует изображения чтобы повторно не оптимизировать
         .pipe(imagemin(app.imagemin)) //Оптимизируем картинку
         .pipe(dest(path.img.dest)); //Копируем в  папку src public

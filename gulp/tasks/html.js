@@ -10,6 +10,8 @@ const notify = require("gulp-notify");
 const fileInclude = require("gulp-file-include");
 const htmlmin = require("gulp-htmlmin");
 const size = require("gulp-size");
+const webpHtml = require("gulp-webp-html");
+
 
 // Обработка HTML
 const html = () => {
@@ -20,7 +22,8 @@ const html = () => {
                 message: error.message
             }))
         }))
-        .pipe(fileInclude()) // Соединяем html
+        .pipe(fileInclude()) //Соединяем html
+        .pipe(webpHtml()) //Создает обвертку для изображения
         .pipe(size({title: "До сжатия HTML"})) //Показывает размер до сжатия
         .pipe(htmlmin(app.htmlmin)) //Сжимаем html
         .pipe(size({title: "После сжатия HTML"})) //Показывает размер после сжатия

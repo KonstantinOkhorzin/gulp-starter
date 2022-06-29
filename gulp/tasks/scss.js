@@ -15,6 +15,7 @@ const shorthand = require("gulp-shorthand");
 const groupCssMediaQueries = require("gulp-group-css-media-queries");
 const sass = require("gulp-sass")(require("sass"));
 const sassGlob = require("gulp-sass-glob");
+const webpCss = require("gulp-webp-css");
 
 
 // Обработка SCSS
@@ -28,6 +29,7 @@ const scss = () => {
         }))
         .pipe(sassGlob()) //Чтобы сократить подключение scss файлов в style.scss
         .pipe(sass()) //Для работы sass
+        .pipe(webpCss()) //Преобразовывет изображенние bg в webp формат
         .pipe(autoprefixer()) //Добавляем свойства с вендорными префиксами для совместимость со старыми браузерами
         .pipe(shorthand()) //Обьединям свойства которые поддерживают сокращение
         .pipe(groupCssMediaQueries()) //Групируем медиа выражения
