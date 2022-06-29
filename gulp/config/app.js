@@ -2,6 +2,6 @@
 
 module.exports = {
     htmlmin: {
-        collapseWhitespace: true // Сжимаем html
+        collapseWhitespace: true //Сжимаем html
     }
-}
+};

@@ -7,6 +7,7 @@ const path = require("./gulp/config/path.js");
 //Задачи
 const clear = require('./gulp/tasks/clear.js');
 const html = require('./gulp/tasks/html.js');
+const scss = require('./gulp/tasks/scss.js');
 
 // Сервер
 const server = () => {
@@ -19,13 +20,16 @@ const server = () => {
 
 // Наблюдение
 const watcher = () => {
-    watch(path.html.watch, html).on("all", browserSync.reload); // за файлами html любой вложености, задача html которую нужно запускать при изменении файлов
+    watch(path.html.watch, html).on("all", browserSync.reload);
+    watch(path.scss.watch, scss).on("all", browserSync.reload); 
 };
 
 // Задачи
 exports.html = html;
-exports.watch = watcher;
-exports.clear = clear;
+exports.scss = scss;
 
 // Сборка
-exports.dev = series(clear, html, parallel(watcher, server));
+exports.dev = series(
+    clear,
+    parallel(html, scss),
+    parallel(watcher, server));
