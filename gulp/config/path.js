@@ -19,13 +19,13 @@ export default {
         dest: pathDest + "/js" //Копируем в  папку public в папку js
     },
     img: {
-        src: pathSrc + "/img/**/*.{png,jpg,jpeg,gif,svg,ico}", //Копируем с папки src/img файлы любой вложености
-        watch: pathSrc + "/img/**/*.{png,jpg,jpeg,gif,svg,ico}", // Следим за всеми файлами  любой вложености в папке src/img
+        src: pathSrc + "/img/**/*.{png,jpg,jpeg,gif}", //Копируем с папки src/img файлы любой вложености
+        watch: pathSrc + "/img/**/*.{png,jpg,jpeg,gif}", // Следим за всеми файлами  любой вложености в папке src/img
         dest: pathDest + "/img" //Копируем в  папку public в папку img
     },
     icons: {
-        src: pathSrc + "/icons/**/*.{png,jpg,jpeg,gif,svg,ico}", //Копируем с папки src/icons файлы любой вложености
-        watch: pathSrc + "/icons/**/*.{png,jpg,jpeg,gif,svg,ico}", // Следим за всеми файлами  любой вложености в папке src/icons
+        src: pathSrc + "/icons/**/*.{svg,ico}", //Копируем с папки src/icons файлы любой вложености
+        watch: pathSrc + "/icons/**/*.{svg,ico}", // Следим за всеми файлами  любой вложености в папке src/icons
         dest: pathDest + "/icons" //Копируем в  папку public в папку icons
     },
     fonts: {

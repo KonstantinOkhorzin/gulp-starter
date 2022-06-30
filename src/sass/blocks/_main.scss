@@ -1,0 +1,23 @@
+main {
+    text-align: center;
+    background-color:rosybrown;
+    h1 {
+        color: rebeccapurple;
+        font-size: 30px;
+        span {
+            color: forestgreen
+        }
+    }
+    p {
+        color : $red-color;
+        @include main-text;
+        background: url(../img/subscribe__bg.jpg);
+    }
+    .img-wrapper {
+        width: 300px;
+        height: 200px;
+        img {
+            @include img_cover;
+        }
+    }
+}

@@ -2,14 +2,11 @@ import gulp from "gulp";
 
 // Конфигурация
 import path from "../config/path.js";
-import app from "../config/app.js";
 
 
 //Плагины
 import plumber from "gulp-plumber";
 import notify from "gulp-notify";
-import imagemin from "gulp-imagemin";
-import gulpIf from "gulp-if";
 
 
 // Обработка ICONS
@@ -21,7 +18,6 @@ const icons = () => {
                 message: error.message
             }))
         }))
-        .pipe(gulpIf(app.isProd, imagemin(app.imagemin))) //Оптимизируем картинку
         .pipe(gulp.dest(path.icons.dest)); //Копируем в  папку public
 };
 
