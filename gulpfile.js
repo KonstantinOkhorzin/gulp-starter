@@ -1,17 +1,18 @@
-const { watch, series, parallel } = require("gulp");
-const browserSync = require("browser-sync").create();
+import gulp from "gulp";
+import browserSync from "browser-sync";
 
 // Конфигурация
-const path = require("./gulp/config/path.js");
+import path from "./gulp/config/path.js";
+import app from "./gulp/config/app.js";
 
 //Задачи
-const clear = require('./gulp/tasks/clear.js');
-const html = require('./gulp/tasks/html.js');
-const scss = require('./gulp/tasks/scss.js');
-const js = require('./gulp/tasks/js.js');
-const img = require('./gulp/tasks/img.js');
-const icons = require('./gulp/tasks/icons.js');
-const fonts = require('./gulp/tasks/fonts.js');
+import clear from './gulp/tasks/clear.js';
+import html from './gulp/tasks/html.js';
+import scss from './gulp/tasks/scss.js';
+import js from './gulp/tasks/js.js';
+import img from './gulp/tasks/img.js';
+import icons from './gulp/tasks/icons.js';
+import fonts from './gulp/tasks/fonts.js';
 
 // Сервер
 const server = () => {
@@ -24,24 +25,33 @@ const server = () => {
 
 // Наблюдение
 const watcher = () => {
-    watch(path.html.watch, html).on("all", browserSync.reload);
-    watch(path.scss.watch, scss).on("all", browserSync.reload);
-    watch(path.js.watch, js).on("all", browserSync.reload);
-    watch(path.img.watch, img).on("all", browserSync.reload);
-    watch(path.icons.watch, icons).on("all", browserSync.reload);
-    watch(path.fonts.watch, fonts).on("all", browserSync.reload);  
+    gulp.watch(path.html.watch, html).on("all", browserSync.reload);
+    gulp.watch(path.scss.watch, scss).on("all", browserSync.reload);
+    gulp.watch(path.js.watch, js).on("all", browserSync.reload);
+    gulp.watch(path.img.watch, img).on("all", browserSync.reload);
+    gulp.watch(path.icons.watch, icons).on("all", browserSync.reload);
+    gulp.watch(path.fonts.watch, fonts).on("all", browserSync.reload);  
 };
 
+const build = gulp.series(
+    clear,
+    gulp.parallel(html, scss, js, img, icons, fonts));
+
+const dev = gulp.series(
+    build,
+    gulp.parallel(watcher, server));
+
 // Задачи
-exports.html = html;
-exports.scss = scss;
-exports.js = js;
-exports.img = img;
-exports.icons = icons;
-exports.fonts = fonts;
+export { html };
+export { scss };
+export { js };
+export { img };
+export { icons };
+export { fonts };
 
 // Сборка
-exports.dev = series(
-    clear,
-    parallel(html, scss, js, img, icons, fonts),
-    parallel(watcher, server));
+export default app.isProd ? build : dev;
+
+//Запуск 
+// Режим разроботки npm start
+// Режим продакшина npm run build

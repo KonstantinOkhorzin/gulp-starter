@@ -1,11 +1,14 @@
+const isProd = process.argv.includes("--production");
+const isDev = !isProd;
 // Настройки плагинов
-
-module.exports = {
+export default {
+    isProd: isProd,
+    isDev: isDev,
     htmlmin: {
-        collapseWhitespace: true //Сжимаем html
+        collapseWhitespace: isProd //Сжимаем html
     },
     webpack: {
-        mode: "development" 
+        mode: isProd ? "production" : "development" 
     },
     imagemin: {
         verbose: true //Показывает размер до и после оптимизации

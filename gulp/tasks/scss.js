@@ -1,26 +1,30 @@
-const { src, dest} = require("gulp");
+import gulp from "gulp";
 
 // Конфигурация
-const path = require("../config/path.js");
+import path from "../config/path.js";
+import app from "../config/app.js";
 
 
 //Плагины
-const plumber = require("gulp-plumber");
-const notify = require("gulp-notify");
-const autoprefixer = require("gulp-autoprefixer");
-const csso = require("gulp-csso");
-const rename = require("gulp-rename");
-const size = require("gulp-size");
-const shorthand = require("gulp-shorthand");
-const groupCssMediaQueries = require("gulp-group-css-media-queries");
-const sass = require("gulp-sass")(require("sass"));
-const sassGlob = require("gulp-sass-glob");
-const webpCss = require("gulp-webp-css");
+import plumber from "gulp-plumber";
+import notify from "gulp-notify";
+import dartSass from 'sass';
+import gulpSass from 'gulp-sass';
+import autoprefixer from "gulp-autoprefixer";
+import csso from "gulp-csso";
+import rename from "gulp-rename";
+import size from "gulp-size";
+import shorthand from "gulp-shorthand";
+import groupCssMediaQueries from "gulp-group-css-media-queries";
+import sassGlob from "gulp-sass-glob";
+import webpCss from "gulp-webp-css";
+import gulpIf from "gulp-if";
 
+const sass = gulpSass(dartSass);
 
 // Обработка SCSS
 const scss = () => {
-    return src(path.scss.src, { sourcemaps: true }) //Копируем с папки src scss файлы первой вложености
+    return gulp.src(path.scss.src, { sourcemaps: app.isDev }) //Копируем с папки src scss файлы первой вложености
         .pipe(plumber({
             errorHandler: notify.onError(error => ({
                 title: "SCSS",
@@ -29,16 +33,15 @@ const scss = () => {
         }))
         .pipe(sassGlob()) //Чтобы сократить подключение scss файлов в style.scss
         .pipe(sass()) //Для работы sass
-        .pipe(webpCss()) //Преобразовывет изображенние bg в webp формат
-        .pipe(autoprefixer()) //Добавляем свойства с вендорными префиксами для совместимость со старыми браузерами
-        .pipe(shorthand()) //Обьединям свойства которые поддерживают сокращение
+        .pipe(gulpIf(app.isProd, webpCss())) //Преобразовывет изображенние bg в webp формат
+        .pipe(gulpIf(app.isProd, autoprefixer())) //Добавляем свойства с вендорными префиксами для совместимость со старыми браузерами
+        .pipe(gulpIf(app.isProd, shorthand())) //Обьединям свойства которые поддерживают сокращение
         .pipe(groupCssMediaQueries()) //Групируем медиа выражения
-        .pipe(size({ title: "style.css"})) //Показывает размер до сжатия
-        .pipe(dest(path.scss.dest, { sourcemaps: true })) //Копируем в  папку public создаем не сжатый дубль
+        .pipe(gulpIf(app.isProd, size({ title: "style.css"}))) //Показывает размер до сжатия
         .pipe(rename( {suffix: ".min"})) //Переименовываем файл
-        .pipe(csso()) //Сжимаем файл
-        .pipe(size({ title: "style.min.css"})) //Показывает размер после сжатия
-        .pipe(dest(path.scss.dest, { sourcemaps: true })); //Копируем в  папку public
+        .pipe(gulpIf(app.isProd, csso())) //Сжимаем файл
+        .pipe(gulpIf(app.isProd, size({ title: "style.min.css"}))) //Показывает размер после сжатия
+        .pipe(gulp.dest(path.scss.dest, { sourcemaps: app.isDev })); //Копируем в  папку public
 };
 
-module.exports = scss;
+export default scss;
