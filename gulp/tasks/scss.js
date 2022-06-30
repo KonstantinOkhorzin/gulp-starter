@@ -17,7 +17,7 @@ import size from "gulp-size";
 import shorthand from "gulp-shorthand";
 import groupCssMediaQueries from "gulp-group-css-media-queries";
 import sassGlob from "gulp-sass-glob";
-import webpCss from "gulp-webp-css";
+import webpCss from "gulp-webpcss";
 import gulpIf from "gulp-if";
 
 const sass = gulpSass(dartSass);
@@ -33,7 +33,12 @@ const scss = () => {
         }))
         .pipe(sassGlob()) //Чтобы сократить подключение scss файлов в style.scss
         .pipe(sass()) //Для работы sass
-        .pipe(gulpIf(app.isProd, webpCss())) //Преобразовывет изображенние bg в webp формат
+        .pipe(gulpIf(app.isProd, webpCss(
+            {
+                webpClass: ".webp",
+                noWebpClass: ".no-webp"
+            }
+        ))) //Преобразовывет изображенние bg в webp формат
         .pipe(gulpIf(app.isProd, autoprefixer())) //Добавляем свойства с вендорными префиксами для совместимость со старыми браузерами
         .pipe(gulpIf(app.isProd, shorthand())) //Обьединям свойства которые поддерживают сокращение
         .pipe(groupCssMediaQueries()) //Групируем медиа выражения
