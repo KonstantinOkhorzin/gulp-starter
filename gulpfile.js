@@ -32,12 +32,12 @@ const watcher = () => {
     gulp.watch(path.js.watch, js).on("all", browserSync.reload);
     gulp.watch(path.img.watch, img).on("all", browserSync.reload);
     gulp.watch(path.icons.watch, icons).on("all", browserSync.reload);
-    gulp.watch(path.fonts.watch, fonts).on("all", browserSync.reload);  
 };
 
 const build = gulp.series(
     clear,
-    gulp.parallel(html, scss, js, img, icons, fonts));
+    fonts,
+    gulp.parallel(html, scss, js, img, icons));
 
 const dev = gulp.series(
     build,

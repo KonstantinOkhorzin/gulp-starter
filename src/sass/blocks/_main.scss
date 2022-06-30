@@ -5,11 +5,10 @@ main {
         color: rebeccapurple;
         font-size: 30px;
         span {
-            color: forestgreen
+            color : $red-color;
         }
     }
     p {
-        color : $red-color;
         @include main-text;
         background: url(../img/subscribe__bg.jpg);
     }

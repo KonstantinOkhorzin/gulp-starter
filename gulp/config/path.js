@@ -30,7 +30,6 @@ export default {
     },
     fonts: {
         src: pathSrc + "/fonts/*.{eot,ttf,otf,otf,ttc,woff,woff2,svg}", //Копируем с папки src/fonts
-        watch: pathSrc + "/fonts/*.{eot,ttf,otf,otf,ttc,woff,woff2,svg}", //Следим за файлами первой вложености в папке src/fonts
         dest: pathDest + "/fonts" //Копируем в  папку public в папку fonts
     },
 };
