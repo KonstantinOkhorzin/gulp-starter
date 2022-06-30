@@ -22,10 +22,10 @@ const fonts = () => {
                 message: error.message
             }))
         }))
-        .pipe(newer(path.fonts.dest)) //Фильтрует уже готовые шрифты
-        .pipe(fonter(app.fonter)) //Конвертирует в woff
-        .pipe(gulp.dest(path.fonts.dest)) //Копируем в  папку public
-        .pipe(ttf2woff2()) //Конвертирует в woff2(Не работает!!!!)
+        // .pipe(newer(path.fonts.dest)) //Фильтрует уже готовые шрифты
+        // .pipe(fonter(app.fonter)) //Конвертирует в woff
+        // .pipe(gulp.dest(path.fonts.dest)) //Копируем в  папку public
+        // .pipe(ttf2woff2()) //Конвертирует в woff2(Не работает!!!!)
         .pipe(gulp.dest(path.fonts.dest)); //Копируем в  папку public
 };
 
