@@ -26,20 +26,20 @@ const html = () => {
         }))
         .pipe(fileInclude()) //Соединяем html
         .pipe(gulpIf(app.isProd, webpHtmlNosvg())) //Создает обвертку для изображения
-        .pipe(gulpIf(app.isProd, versionNumber({
-            'value': '%DT%',
-            'append': {
-                'key': '_v',
-                'cover': 0,
-                'to': [
-                    'css',
-                    'js',
-                ]
-            },
-            'output': {
-                'file': 'gulp/version.json'
-            }
-        })))
+        // .pipe(gulpIf(app.isProd, versionNumber({
+        //     'value': '%DT%',
+        //     'append': {
+        //         'key': '_v',
+        //         'cover': 0,
+        //         'to': [
+        //             'css',
+        //             'js',
+        //         ]
+        //     },
+        //     'output': {
+        //         'file': 'gulp/version.json'
+        //     }
+        // })))
         .pipe(gulpIf(app.isProd, size({title: "До сжатия HTML"}))) //Показывает размер до сжатия
         .pipe(htmlmin(app.htmlmin)) //Сжимаем html
         .pipe(gulpIf(app.isProd, size({title: "После сжатия HTML"}))) //Показывает размер после сжатия

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion</title>
+</head>
+<body>
+
+    <!-- Для родителя спойлера пишем атрибут data-accordions
+    Для заголовков (кнопки) спойлера пишем атрибут data-accordion
+    Если нужно что бы в блоке открывался только один спойлер добавляем атрибут data-one-accordion -->
+    
+    <div data-accordions data-one-accordion class="accordion accordion_1">
+        <div class="accordion__item">
+            <button data-accordion class="accordion__title">Обычный спойлер №1</button>
+            <div class="accordion__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ex magni ratione est fugit praesentium ut molestias. Vitae odio quos blanditiis, quisquam facere possimus tenetur recusandae, tempore hic incidunt doloremque.</div>
+        </div>
+        <div class="accordion__item">
+            <button data-accordion class="accordion__title">Обычный спойлер №2</button>
+            <div class="accordion__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ex magni ratione est fugit praesentium ut molestias. Vitae odio quos blanditiis, quisquam facere possimus tenetur recusandae, tempore hic incidunt doloremque.</div>
+        </div>
+        <div class="accordion__item">
+            <button data-accordion class="accordion__title">Обычный спойлер №3</button>
+               <div class="accordion__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ex magni ratione est fugit praesentium ut molestias. Vitae odio quos blanditiis, quisquam facere possimus tenetur recusandae, tempore hic incidunt doloremque.</div>
+        </div>
+    </div>
+
+
+    <!-- data-accordions="768,min" - спойлеры будут работать только на экранах больше или равно 768px -->
+    <div data-accordions="768,min" class="accordion accordion_2">
+        <div class="accordion__item">
+            <button data-accordion class="accordion__title">Спойлер работает на экранах >= 650px</button>
+            <div class="accordion__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ex magni ratione est fugit praesentium ut molestias. Vitae odio quos blanditiis, quisquam facere possimus tenetur recusandae, tempore hic incidunt doloremque.</div>
+        </div>
+    </div>
+
+
+    <!-- data-accordions="992,max" - спойлеры будут работать только на экранах меньше или равно 992px -->
+    <div data-accordions="992,max" class="accordion accordion_3">
+        <div class="accordion__item">
+            <button data-accordion class="accordion__title">Спойлер работает на экранах <= 800px</button>
+            <div class="accordion__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ex magni ratione est fugit praesentium ut molestias. Vitae odio quos blanditiis, quisquam facere possimus tenetur recusandae, tempore hic incidunt doloremque.</div>
+        </div>
+        <div class="accordion__item">
+            <button data-accordion class="accordion__title">Спойлер работает на экранах <= 800px</button>
+            <div class="accordion__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ex magni ratione est fugit praesentium ut molestias. Vitae odio quos blanditiis, quisquam facere possimus tenetur recusandae, tempore hic incidunt doloremque.</div>
+        </div>
+    </div>
+
+</body>
+</html>

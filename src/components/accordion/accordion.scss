@@ -1,0 +1,68 @@
+.accordion {
+    margin: 0 0 30px 0;
+  }
+  
+  .accordion__item {
+    margin: 0 0 10px 0;
+  }
+  
+  .accordion__title {
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+    background-color: transparent;
+    color: #fff;
+    padding: 10px;
+    position: relative;
+  }
+  
+  /*.accordion._init - технический класс*/
+  .accordion._init .accordion__title {
+    cursor: pointer;
+  }
+  
+  .accordion._init .accordion__title {
+    padding: 10px 40px 10px 10px;
+  }
+  
+  .accordion._init .accordion__title::before,
+  .accordion._init .accordion__title::after {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background-color: #fff;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    -webkit-transition: -webkit-transform 0.3s ease 0s;
+    transition: -webkit-transform 0.3s ease 0s;
+    transition: transform 0.3s ease 0s;
+    transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
+  }
+  
+  .accordion._init .accordion__title::after {
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+  }
+  
+  .accordion._init .accordion__title._active::after {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  
+  .accordion__text {
+    padding: 0 10px 10px;
+    line-height: 130%;
+  }
+  
+  .accordion_1 .accordion__item {
+    background-color: #77608d;
+  }
+  
+  .accordion_2 .accordion__item {
+    background-color: #794f45;
+  }
+  
+  .accordion_3 .accordion__item {
+    background-color: #7a956b;
+  }
