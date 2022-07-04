@@ -1,0 +1,16 @@
+
+.tabs {
+    display: flex;
+}
+.tab {
+    &_active {
+        border: 2px red solid;
+    }
+}
+.tab-content {
+    display: none;
+    &_active {
+        @include fade;
+        display: block;
+    }
+}
